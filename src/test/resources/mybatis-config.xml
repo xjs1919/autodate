@@ -4,8 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+	<typeAliases>
+		<typeAlias alias="User" type="com.chrhc.mybatis.autodate.domain.User" />
+	</typeAliases>
+	
+	
 	<plugins>
-		<plugin interceptor="com.mook.locker.interceptor.AutoDateInterceptor">
+		<plugin interceptor="com.chrhc.mybatis.autodate.interceptor.AutoDateInterceptor">
 			<property name="createDateColumn" value="create_date_1"/>
 			<property name="updateDateColumn" value="update_date_1"/>
 		</plugin>
@@ -22,7 +27,10 @@
 			</dataSource>
 		</environment>
 	</environments>
+	
+	
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml" />
 	</mappers>
+	
 </configuration>
