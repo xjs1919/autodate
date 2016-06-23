@@ -1,10 +1,10 @@
-package com.mook.locker.misc.mapper;
+package com.chrhc.mybatis.autodate.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.mook.locker.misc.domain.User;
+import com.chrhc.mybatis.autodate.domain.User;
 
 public interface UserMapper {
 	

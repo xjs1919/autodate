@@ -1,4 +1,4 @@
-package com.mook.locker.misc.domain;
+package com.chrhc.mybatis.autodate.domain;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.mook.mybatis.autodate.interceptor;
+package com.chrhc.mybatis.autodate.interceptor;
 
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
@@ -19,7 +19,7 @@ import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
-import com.mook.mybatis.autodate.util.PluginUtil;
+import com.chrhc.mybatis.autodate.util.PluginUtil;
 
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.StringValue;

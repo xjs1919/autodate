@@ -1,4 +1,4 @@
-package com.mook.locker.misc.test.mapper;
+package com.chrhc.mybatis.autodate.mapper.test;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.mook.locker.misc.domain.User;
-import com.mook.locker.misc.mapper.UserMapper;
+import com.chrhc.mybatis.autodate.domain.User;
+import com.chrhc.mybatis.autodate.mapper.UserMapper;
 
 public class UserMapperTest {
 	

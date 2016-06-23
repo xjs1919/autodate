@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.mook.mybatis.autodate.util;
+package com.chrhc.mybatis.autodate.util;
 
 import java.lang.reflect.Proxy;
 
