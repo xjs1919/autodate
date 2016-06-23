@@ -55,29 +55,31 @@ public class AutoDateInterceptor implements Interceptor {
 		if(sqlCmdType != SqlCommandType.UPDATE && sqlCmdType != SqlCommandType.INSERT) {
 			return invocation.proceed();
 		}
-		
 		//获取配置参数
 		String createDateColumn, updateDateColumn;
 		if(null == props || props.isEmpty()) {
-			createDateColumn = "create_date";
-			updateDateColumn = "update_date";
-		} else {
-			createDateColumn = props.getProperty("createDateColumn", "create_date");
-			updateDateColumn = props.getProperty("updateDateColumn", "update_date");
+			return invocation.proceed();
+		} 
+		createDateColumn = props.getProperty("createDateColumn", "");
+		updateDateColumn = props.getProperty("updateDateColumn", "");
+		if(createDateColumn.length() <= 0 && updateDateColumn.length() <= 0){
+			return invocation.proceed();
 		}
 		//获取原始sql
 		String originalSql = (String) metaObject.getValue("delegate.boundSql.sql"); 
 		logger.debug("==> originalSql: " + originalSql);
 		//追加上日期
 		String newSql = "";
-		if(sqlCmdType == SqlCommandType.UPDATE){
+		if(sqlCmdType == SqlCommandType.UPDATE && updateDateColumn.length() > 0){
 			newSql = addUpdateDateToSql(originalSql, updateDateColumn);
-		}else if(sqlCmdType == SqlCommandType.INSERT){
+		}else if(sqlCmdType == SqlCommandType.INSERT && createDateColumn.length() > 0){
 			newSql = addCreateDateToSql(originalSql, createDateColumn);
 		}
-		logger.debug("==> newSql: " + newSql);
 		//修改原始sql
-		metaObject.setValue("delegate.boundSql.sql", newSql);
+		if(newSql.length() > 0){
+			logger.debug("==> newSql: " + newSql);
+			metaObject.setValue("delegate.boundSql.sql", newSql);
+		}
 	    return invocation.proceed();
 	}
 	

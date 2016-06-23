@@ -23,21 +23,18 @@
 ----------
 ### 1. 使用方式：在mybatis配置文件中加入如下配置，就完成了。 ###
 	<plugins>
-		<plugin interceptor="com.chrhc.mybatis.autodate.interceptor.AutoDateInterceptor"/>
-	</plugins>
-
-----------
-
-### 2. 对插件配置的说明： ###
-	
-插件的默认配置是：数据库的列名是create_date和update_date。这里可以自定义属性命，例如：
-
-	<plugins>
 		<plugin interceptor="com.chrhc.mybatis.autodate.interceptor.AutoDateInterceptor">
 			<property name="createDateColumn" value="create_date"/>
 			<property name="updateDateColumn" value="update_date"/>
 		</plugin>
 	</plugins>
+----------
+
+### 2. 对插件配置的说明： ###
+	
+	create_date和update_date代表数据库表中的创建时间和更新时间，这两个可以只配置一个，也可以两个都配置。
+	如果两个都不配置，则相当于插件不起作用。
+
 
 ----------
 
