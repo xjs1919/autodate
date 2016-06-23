@@ -32,6 +32,10 @@ import net.sf.jsqlparser.statement.Statement;
 import net.sf.jsqlparser.statement.insert.Insert;
 import net.sf.jsqlparser.statement.update.Update;
 
+/**
+ * @author 605162215@qq.com
+ * @date 2016-06-23
+ */
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
 public class AutoDateInterceptor implements Interceptor {
 	
