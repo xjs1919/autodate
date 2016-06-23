@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mook.locker.misc.mapper.UserMapper">
+	
+	<insert id="insertUser" parameterType="com.mook.locker.misc.domain.User">
+		insert into smart_user(id, name, password, version)values(#{id}, #{name}, #{password}, #{version})
+	</insert>
+	
+	<insert id="insertUserParams" >
+		insert into smart_user(id, name, password, version)values(#{id}, #{name}, #{password}, #{version})
+	</insert>
+	
+	<insert id="insertUserNotIntercept" parameterType="com.mook.locker.misc.domain.User">
+		insert into smart_user(id, name, password, version)values(#{id}, #{name}, #{password}, #{version})
+	</insert>
+	
+	<insert id="insertUserWithDate" parameterType="com.mook.locker.misc.domain.User">
+		insert into smart_user(id, name, password, version, create_date_1)values(#{id}, #{name}, #{password}, #{version}, #{createDate1})
+	</insert>
+	
+	<insert id="insertBatchUser" parameterType="java.util.List">
+		insert into smart_user(id, name, password, version)values
+		 <foreach collection="list" item="item" index="index" separator=",">
+		  (#{item.id}, #{item.name}, #{item.password}, #{item.version})
+  		</foreach>
+	</insert>
+	
+	<update id="updateVersion" parameterType="com.mook.locker.misc.domain.User">
+		update smart_user set version = #{version} where id = #{id}
+	</update>
+	
+	<update id="updateVersionWithDate" parameterType="com.mook.locker.misc.domain.User">
+		update smart_user set version = #{version}, update_date_1=#{updateDate1} where id = #{id}
+	</update>
+	
+	<update id="updateBatchVersion" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update smart_user 
+			<set>
+			version=${item.version}
+			</set>
+			where id = ${item.id}
+		</foreach>
+	</update>
+
+	<delete id="resetData">
+		delete from smart_user
+	</delete>
+	
+</mapper>

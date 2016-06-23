@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<plugins>
+		<plugin interceptor="com.mook.locker.interceptor.AutoDateInterceptor">
+			<property name="createDateColumn" value="create_date_1"/>
+			<property name="updateDateColumn" value="update_date_1"/>
+		</plugin>
+	</plugins>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/test?allowMultiQueries=true" />
+				<property name="username" value="root" />
+				<property name="password" value="123456" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mapper/UserMapper.xml" />
+	</mappers>
+</configuration>
