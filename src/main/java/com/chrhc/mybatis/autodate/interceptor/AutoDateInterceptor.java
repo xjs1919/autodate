@@ -22,7 +22,6 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 import com.chrhc.mybatis.autodate.util.PluginUtil;
 
 import net.sf.jsqlparser.expression.Expression;
-import net.sf.jsqlparser.expression.StringValue;
 import net.sf.jsqlparser.expression.TimestampValue;
 import net.sf.jsqlparser.expression.operators.relational.ExpressionList;
 import net.sf.jsqlparser.expression.operators.relational.ItemsList;
@@ -146,7 +145,7 @@ public class AutoDateInterceptor implements Interceptor {
 				versionColumn.setColumnName(columnName);
 				columns.add(versionColumn);
 				List<Expression> expressions = update.getExpressions();
-				StringValue val = new StringValue(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+				TimestampValue val = new TimestampValue(TIMESTAMP_FORMAT.format(new Date()));
 				expressions.add(val);
 			}
 			return stmt.toString();

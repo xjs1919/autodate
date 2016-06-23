@@ -45,7 +45,7 @@
 
 > 之前：**update smart_user set version = ? where id = ?**
 
-> 之后：**UPDATE smart_user SET version = ?, update_date = '016-06-23 15:01:5' WHERE id = ?**
+> 之后：**UPDATE smart_user SET version = ?, update_date = {ts '2016-06-23 15:33:03.644'} WHERE id = ?**
 
 ----------
 
