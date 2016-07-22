@@ -10,9 +10,24 @@
 	
 	
 	<plugins>
-		<plugin interceptor="com.chrhc.mybatis.autodate.interceptor.AutoDateInterceptor">
-			<property name="createDateColumn" value="create_date_1"/>
-			<property name="updateDateColumn" value="update_date_1"/>
+	
+		<plugin interceptor="com.chrhc.mybatis.autodate.interceptor.CommonDataInterceptor">
+		
+			<property name="createDateColumn" value="create_date"/>
+			<property name="updateDateColumn" value="update_date"/>
+			
+			<property name="versionColumn" value="version"/>
+			
+			<property name="createUserIdColumn" value="create_user_id"/>
+			<property name="createUserIdField" value="createUserId"/>
+			<property name="createByColumn" value="create_by"/>
+			<property name="createByField" value="createBy"/>
+			
+			<property name="updateUserIdColumn" value="update_user_id"/>
+			<property name="updateUserIdField" value="updateUserId"/>
+			<property name="updateByColumn" value="update_by"/>
+			<property name="updateByField" value="updateBy"/>
+			
 		</plugin>
 	</plugins>
 	

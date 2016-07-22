@@ -5,39 +5,78 @@
 <mapper namespace="com.chrhc.mybatis.autodate.mapper.UserMapper">
 	
 	<insert id="insertUser" parameterType="User">
-		insert into smart_user(id, name, password, version)values(#{id}, #{name}, #{password}, #{version})
+		insert into auto_data_user(id, name, password)values(#{id}, #{name}, #{password})
+	</insert>
+	
+	<insert id="insertUserAtParam" parameterType="User">
+		insert into auto_data_user(id, name, password)values(#{user.id}, #{user.name}, #{user.password})
+	</insert>
+	
+	
+	<insert id="insertUserNoParams">
+		insert into auto_data_user(id, name, password)values(#{id}, #{name}, #{password})
 	</insert>
 	
 	<insert id="insertUserParams" >
-		insert into smart_user(id, name, password, version)values(#{id}, #{name}, #{password}, #{version})
+		insert into auto_data_user(id, name, password)values(#{id}, #{name}, #{password})
 	</insert>
 	
+	<insert id="insertUserMap" parameterType="java.util.Map">
+		insert into auto_data_user(id, name, password)values(#{id}, #{name}, #{password})
+	</insert>
+	
+	<insert id="insertUserMapAtParam" parameterType="java.util.Map">
+		insert into auto_data_user(id, name, password)values(#{user.id}, #{user.name}, #{user.password})
+	</insert>
+	
+	
 	<insert id="insertUserNotIntercept" parameterType="User">
-		insert into smart_user(id, name, password, version)values(#{id}, #{name}, #{password}, #{version})
+		insert into auto_data_user(id, name, password)values(#{id}, #{name}, #{password})
 	</insert>
 	
 	<insert id="insertUserWithDate" parameterType="User">
-		insert into smart_user(id, name, password, version, create_date_1)values(#{id}, #{name}, #{password}, #{version}, #{createDate1})
+		insert into auto_data_user(id, name, password, create_date)values(#{id}, #{name}, #{password},#{createDate})
 	</insert>
 	
 	<insert id="insertBatchUser" parameterType="java.util.List">
-		insert into smart_user(id, name, password, version)values
+		insert into auto_data_user(id, name, password)values
 		 <foreach collection="list" item="item" index="index" separator=",">
-		  (#{item.id}, #{item.name}, #{item.password}, #{item.version})
+		  (#{item.id}, #{item.name}, #{item.password})
+  		</foreach>
+	</insert>
+	
+	<insert id="insertBatchUserAtParam" parameterType="java.util.List">
+		insert into auto_data_user(id, name, password)values
+		 <foreach collection="users" item="item" index="index" separator=",">
+		  (#{item.id}, #{item.name}, #{item.password})
+  		</foreach>
+	</insert>
+	
+	<insert id="insertBatchUserMap" parameterType="java.util.List">
+		insert into auto_data_user(id, name, password)values
+		 <foreach collection="list" item="item" index="index" separator=",">
+		  (#{item.id}, #{item.name}, #{item.password})
+  		</foreach>
+	</insert>
+	
+	<insert id="insertBatchUserMapAtParam" parameterType="java.util.List">
+		insert into auto_data_user(id, name, password)values
+		 <foreach collection="users" item="item" index="index" separator=",">
+		  (#{item.id}, #{item.name}, #{item.password})
   		</foreach>
 	</insert>
 	
 	<update id="updateVersion" parameterType="User">
-		update smart_user set version = #{version} where id = #{id}
+		update auto_data_user set version = #{version} where id = #{id}
 	</update>
 	
 	<update id="updateVersionWithDate" parameterType="User">
-		update smart_user set version = #{version}, update_date_1=#{updateDate1} where id = #{id}
+		update auto_data_user set version = #{version}, update_date=#{updateDate} where id = #{id}
 	</update>
 	
 	<update id="updateBatchVersion" parameterType="java.util.List">
 		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
-			update smart_user 
+			update auto_data_user 
 			<set>
 			version=${item.version}
 			</set>
@@ -46,7 +85,7 @@
 	</update>
 
 	<delete id="resetData">
-		delete from smart_user
+		delete from auto_data_user
 	</delete>
 	
 </mapper>

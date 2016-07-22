@@ -11,8 +11,12 @@ public class User implements Serializable {
 	private String name;
 	private String password;
 	private Long version;
-	private Date createDate1;
-	private Date updateDate1;
+	private Date createDate;
+	private Date updateDate;
+	private String createUserId;
+	private String updateUserId;
+	private String createBy;
+	private String updateBy;
 
 	public Integer getId() {
 		return id;
@@ -38,53 +42,59 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public Date getCreateDate1() {
-		return createDate1;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreateDate1(Date createDate1) {
-		this.createDate1 = createDate1;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getUpdateDate1() {
-		return updateDate1;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdateDate1(Date updateDate1) {
-		this.updateDate1 = updateDate1;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-
 	public Long getVersion() {
 		return version;
 	}
 
 	public void setVersion(Long version) {
 		this.version = version;
+	}
+
+	public String getCreateUserId() {
+		return createUserId;
+	}
+
+	public void setCreateUserId(String createUserId) {
+		this.createUserId = createUserId;
+	}
+
+	public String getUpdateUserId() {
+		return updateUserId;
+	}
+
+	public void setUpdateUserId(String updateUserId) {
+		this.updateUserId = updateUserId;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public String getUpdateBy() {
+		return updateBy;
+	}
+
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
 	}
 
 }
