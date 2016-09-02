@@ -267,7 +267,9 @@ public class CommonDataInterceptor implements Interceptor {
 		}else if(parameterObject instanceof MapperMethod.ParamMap<?>){
 			MapperMethod.ParamMap map = (MapperMethod.ParamMap)parameterObject;
 			Object param1 = map.get("param1");
-			value = getValueFromListOrArray(param1, index, fieldName);
+			if(param1.getClass().isArray() || List.class.isAssignableFrom(param1.getClass())){
+				value = getValueFromListOrArray(param1, index, fieldName);
+			}
 			if(value == null){
 				if(TypeUtil.isSimpleType(param1==null?null:param1.getClass())){
 					Set keys = map.keySet();
