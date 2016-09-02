@@ -143,13 +143,13 @@ public class CommonDataInterceptor implements Interceptor {
 				versionColumn.setColumnName(columnName);
 				columns.add(versionColumn);
 				ItemsList itemList = update.getItemsList();
-				if(itemList instanceof ExpressionList){//单个
+				if(itemList instanceof ExpressionList){//单个,也有可能是批量接口实际只传递了1个
 					ExpressionList expressionList = (ExpressionList)itemList;
 					List<Expression> expressions = expressionList.getExpressions();
 					if(expression != null){
 						expressions.add(expression);
 					}else{
-						Object value = getFieldValue(parameterObject,-1, fieldName);
+						Object value = getFieldValue(parameterObject, 0, fieldName);
 						expressions.add(new StringValue("-"+value.toString()+"-"));
 					}
 				}else if(itemList instanceof MultiExpressionList){//批量
