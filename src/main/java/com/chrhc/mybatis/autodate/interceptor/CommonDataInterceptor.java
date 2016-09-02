@@ -193,6 +193,22 @@ public class CommonDataInterceptor implements Interceptor {
 			if(i > 0 ){
 				sb.append(";");
 			}
+			try{
+				Statement stmt = CCJSqlParserUtil.parse(sqlList[i]);
+				if(!(stmt instanceof Update)){
+					return originalSql;
+				}
+				Update update = (Update)stmt;
+				List<Column> columns = update.getColumns();
+				if(contains(columns, columnName)){
+					sb.append(sqlList[i]);
+					continue;
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+				sb.append(sqlList[i]);
+				continue;
+			}
 			if(expression == null){
 				Object value = getFieldValue(parameterObject, i, fieldName);
 				String sql = addUpdateDateToSql(sqlList[i], columnName, new StringValue("-"+value.toString()+"-"));

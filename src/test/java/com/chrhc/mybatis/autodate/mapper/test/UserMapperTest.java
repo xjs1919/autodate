@@ -233,4 +233,10 @@ public class UserMapperTest {
 		userMapper.updateBatchVersion(users);
 	}
 	
+	@Test
+	public void testUpdateNoBean() throws Exception {
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		userMapper.updateNoBean(100, 0, "userid", "user");
+	}
+	
 }

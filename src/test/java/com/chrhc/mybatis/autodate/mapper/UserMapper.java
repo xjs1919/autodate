@@ -38,6 +38,8 @@ public interface UserMapper {
 	
 	Integer updateBatchVersion(List<User> users);
 	
+	Integer updateNoBean(@Param("id")int id, @Param("version")int version, @Param("updateUserId")String updateUserId, @Param("updateBy")String updateBy);
+	
 	Integer resetData();
 	
 }
